@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Réservation de salles</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      font-size: 14px;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .menu a {
+      margin-right: 10px;
+    }
+
+    .box {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .modal-content {
+      background: white;
+      margin: 20% auto;
+      padding: 20px;
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Réservation salles</h1>
+
+  <div class="menu">
+    <a href="#list">Salles</a>
+    <a href="#form">Réserver</a>
+  </div>
+</header>
+
+<main>
+
+  <h2>Liste des salles</h2>
+
+  <div class="box">
+    Salle A - disponible
+  </div>
+
+  <div class="box">
+    Salle B - occupée
+  </div>
+
+  <h2 id="form">Réserver une salle</h2>
+
+  <form id="bookingForm">
+    Nom :
+    <input type="text" id="name">
+
+    Salle :
+    <input type="text" id="room">
+
+    <button type="submit">Valider</button>
+  </form>
+
+  <div id="msg"></div>
+
+</main>
+
+<footer>
+  <p>Copyright 2026</p>
+</footer>
+
+<!-- MODALE -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    Réservation confirmée
+    <button id="close">OK</button>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("bookingForm");
+  const modal = document.getElementById("modal");
+  const close = document.getElementById("close");
+  const msg = document.getElementById("msg");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    modal.style.display = "block";
+    msg.innerText = "Réservation effectuée";
+  });
+
+  close.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+</script>
+<p>
+<b>Niveau A :</b> ajouter des labels aux champs de formulaire, corriger la structure sémantique (nav, listes, main), rendre la modale accessible (role dialog, gestion clavier, focus), assurer une navigation clavier complète et logique, rendre les messages de statut accessibles (aria-live).
+</p>
+
+<p>
+<b>Niveau AA :</b> améliorer le contraste des couleurs (texte et liens), garantir un focus visible, annoncer correctement les messages de retour utilisateur, améliorer la gestion du focus et de l’interaction dans la modale.
+</p>
+<p>
+<b>Niveau AAA :</b> augmenter encore le contraste (niveau plus élevé), renforcer les aides à la saisie et instructions contextuelles, améliorer la clarté et la précision des messages, rendre la navigation et les parcours encore plus guidés et prévisibles.
+</p>
+</body>
+</html>

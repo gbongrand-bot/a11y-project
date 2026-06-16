@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Boutique de Ballons de Football</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 1rem;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .skip-link:focus {
+            left: 10px;
+            top: 10px;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #0056b3;
+        }
+
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 3px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 1rem;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+
+        form div {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .error {
+            color: #b00020;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+<header>
+    <h1>Boutique de Ballons de Football</h1>
+
+    <nav aria-label="Navigation principale">
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#produits">Produits</a></li>
+            <li><a href="#commande">Commande</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="contenu">
+
+    <section id="accueil">
+        <h2>Bienvenue</h2>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Football_%28soccer_ball%29.svg"
+             alt="Ballon de football classique">
+    </section>
+
+    <section id="produits">
+        <h2>Nos ballons</h2>
+
+        <div class="products">
+
+            <article class="product">
+                <h3>Ballon Training</h3>
+                <p>Idéal pour l'entraînement quotidien.</p>
+                <p class="price">15 €</p>
+                <button type="button">Ajouter au panier</button>
+            </article>
+
+            <article class="product">
+                <h3>Ballon Match Pro</h3>
+                <p>Ballon officiel pour compétition.</p>
+                <p class="price">35 €</p>
+                <button type="button">Ajouter au panier</button>
+            </article>
+
+            <article class="product">
+                <h3>Ballon Junior</h3>
+                <p>Parfait pour les enfants et débutants.</p>
+                <p class="price">12 €</p>
+                <button type="button">Ajouter au panier</button>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="commande">
+        <h2>Commande</h2>
+
+        <form id="formCommande" action="#" method="post" novalidate>
+
+            <div>
+                <label for="nom">Nom complet *</label>
+                <input id="nom" name="nom" type="text" required aria-describedby="err-nom" aria-invalid="false">
+                <p id="err-nom" class="error" aria-live="polite"></p>
+            </div>
+
+            <div>
+                <label for="email">Email *</label>
+                <input id="email" name="email" type="email" required aria-describedby="err-email" aria-invalid="false">
+                <p id="err-email" class="error" aria-live="polite"></p>
+            </div>
+
+            <div>
+                <label for="adresse">Adresse de livraison *</label>
+                <textarea id="adresse" name="adresse" required aria-describedby="err-adresse" aria-invalid="false"></textarea>
+                <p id="err-adresse" class="error" aria-live="polite"></p>
+            </div>
+
+            <button type="submit">Valider la commande</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+
+        <p>Contactez-nous :</p>
+
+        <a href="https://www.fff.fr" target="_blank" rel="noopener noreferrer">
+            Fédération Française de Football
+        </a>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Boutique de Ballons de Football</p>
+</footer>
+
+<script>
+document.getElementById("formCommande").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nom = document.getElementById("nom");
+    const email = document.getElementById("email");
+    const adresse = document.getElementById("adresse");
+
+    let valid = true;
+
+    function setError(input, message, errorId) {
+        document.getElementById(errorId).textContent = message;
+        input.setAttribute("aria-invalid", "true");
+        valid = false;
+    }
+
+    function clearError(input, errorId) {
+        document.getElementById(errorId).textContent = "";
+        input.setAttribute("aria-invalid", "false");
+    }
+
+    if (!nom.value.trim()) {
+        setError(nom, "Le nom est obligatoire", "err-nom");
+    } else {
+        clearError(nom, "err-nom");
+    }
+
+    if (!email.value.trim()) {
+        setError(email, "L'email est obligatoire", "err-email");
+    } else {
+        clearError(email, "err-email");
+    }
+
+    if (!adresse.value.trim()) {
+        setError(adresse, "L'adresse est obligatoire", "err-adresse");
+    } else {
+        clearError(adresse, "err-adresse");
+    }
+
+    if (valid) {
+        alert("Commande envoyée avec succès");
+        this.reset();
+    }
+});
+</script>
+
+</body>
+</html>
