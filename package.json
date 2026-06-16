@@ -1,13 +1,15 @@
-{
-  "name": "a11y-project",
+  {
+  "name": "app_02",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "test:a11y": "node a11y.node.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:a11y": "node tests/a11y.audit.js"
   },
-  "dependencies": {
-    "express": "^5.2.1",
-    "puppeteer": "^25.1.0"
-  }
-}
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+ "dependencies": {
+  "puppeteer": "^21.11.0"
