@@ -8,7 +8,7 @@ const browser = await puppeteer.launch({
 });
   const page = await browser.newPage();
 
-const BASE_URL = process.env.BASE_URL || 'http://localhost:8080';
+const BASE_URL = process.env.BASE_URL || 'http://localhost';
 
 await page.goto(BASE_URL, {
   waitUntil: 'networkidle0'

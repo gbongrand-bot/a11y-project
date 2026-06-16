@@ -1,5 +1,3 @@
---.github\workflows\a11y.yml
-
 name: Accessibility Tests (A11Y - RGAA)
 
 on:
@@ -26,6 +24,12 @@ jobs:
 
       - name: Install Chrome for Puppeteer
         run: npx puppeteer browsers install chrome
+
+      - name: Start server
+        run: node server.js &
+
+      - name: Wait server
+        run: sleep 3
 
       - name: Run accessibility tests
         run: npm run test:a11y

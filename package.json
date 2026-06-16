@@ -1,4 +1,11 @@
 {
+  "name": "a11y-project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test:a11y": "node a11y.node.js"
+  },
   "dependencies": {
     "express": "^5.2.1",
     "puppeteer": "^25.1.0"
